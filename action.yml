@@ -1,0 +1,26 @@
+# action.yml
+name: 'Aws KubeConfig Generator'
+description: 'Generates a KubeConfig file and leaves in the folder you mounted to /project'
+inputs:
+  aws-access-key-id:
+    description: 'Aws Access Key ID'
+    required: true
+    default: ''
+  aws-secret-access-key:
+    description: 'Aws Secret Access Key'
+    required: true
+    default: ''
+  aws-default-region:
+    description: 'Aws Default Region'
+    required: false
+    default: 'us-west-2'
+outputs:
+  kubeconfig:
+    description: 'kubeconfig generated file'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.aws-access-key-id }}
+    - ${{ inputs.aws-secret-access-key }}
+    - ${{ inputs.aws-default-region }}
