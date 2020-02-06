@@ -12,5 +12,5 @@ RUN apk -v --update add \
 VOLUME /root/.aws
 VOLUME /project
 RUN mkdir /scripts
-COPY script.sh /scripts/script.sh
-ENTRYPOINT ["sh","/scripts/script.sh"]
+COPY entrypoint.sh /scripts/entrypoint.sh
+ENTRYPOINT ["sh","/scripts/entrypoint.sh"]

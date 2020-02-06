@@ -10,6 +10,10 @@ inputs:
     description: 'Aws Secret Access Key'
     required: true
     default: ''
+  aws-cluster-name:
+    description: 'Aws Cluster name'
+    required: true
+    default: ''
   aws-default-region:
     description: 'Aws Default Region'
     required: false
@@ -24,3 +28,4 @@ runs:
     - ${{ inputs.aws-access-key-id }}
     - ${{ inputs.aws-secret-access-key }}
     - ${{ inputs.aws-default-region }}
+    - ${{ inputs.aws-cluster-name }}
