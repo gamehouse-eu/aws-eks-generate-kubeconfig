@@ -28,9 +28,11 @@ kubeconfig generated file
 
 ## Example usage
 
+```
 uses: actions/aws-eks-generate-kubeconfig@v1
 with:
   aws-access-key-id: '<YOUR-aws-access-key-id>'
   aws-secret-access-key: '<YOUR-aws-secret-access-key>'
   aws-default-region: '<YOUR-aws-default-region>'
   aws-cluster-name: '<YOUR-aws-cluster-name>'
+```
