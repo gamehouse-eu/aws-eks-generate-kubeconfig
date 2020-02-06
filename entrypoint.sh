@@ -6,3 +6,4 @@ export K8S_CLUSTER=$4
 aws eks update-kubeconfig --name $4
 cp ~/.kube/config ./kubeconfig
 cat ~/.kube/config
+echo "::set-output name=kubeconfig::$(cat ~/.kube/config)"
