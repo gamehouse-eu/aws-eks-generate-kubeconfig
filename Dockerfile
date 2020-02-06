@@ -11,5 +11,6 @@ RUN apk -v --update add \
     rm /var/cache/apk/*
 VOLUME /root/.aws
 VOLUME /project
-WORKDIR /project
-ENTRYPOINT ["sh","/project/script.sh"]
+RUN mkdir /scripts
+COPY script.sh /scripts/script.sh
+ENTRYPOINT ["sh","/scripts/script.sh"]
