@@ -35,4 +35,6 @@ with:
   aws-secret-access-key: '<YOUR-aws-secret-access-key>'
   aws-default-region: '<YOUR-aws-default-region>'
   aws-cluster-name: '<YOUR-aws-cluster-name>'
+  helm-release: '<YOUR-helm-release>'
+  k8s-namespace: '<YOUR-k8s-namespace>'
 ```

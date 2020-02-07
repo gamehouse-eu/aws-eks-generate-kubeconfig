@@ -18,9 +18,17 @@ inputs:
     description: 'Aws Default Region'
     required: false
     default: 'us-west-2'
+  helm-release:
+    description: 'Helm release name'
+    required: true
+    default: ''
+  k8s-namespace:
+    description: 'k8s namespace'
+    required: true
+    default: ''
 outputs:
-  kubeconfig:
-    description: 'kubeconfig generated file'
+  result:
+    description: 'result of helm deployment'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -29,3 +37,5 @@ runs:
     - ${{ inputs.aws-secret-access-key }}
     - ${{ inputs.aws-default-region }}
     - ${{ inputs.aws-cluster-name }}
+    - ${{ inputs.helm-release }}
+    - ${{ inputs.k8s-namespace }}
