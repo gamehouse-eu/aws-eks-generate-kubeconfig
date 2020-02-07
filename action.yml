@@ -44,3 +44,4 @@ runs:
     - ${{ inputs.helm-chart-folder }}
     - ${{ inputs.helm-release }}
     - ${{ inputs.k8s-namespace }}
+    - ${{ inputs.helm-parameters }}
