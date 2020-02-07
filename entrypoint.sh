@@ -11,5 +11,4 @@ NAMESPACE=$7
 VALUES=$8
 
 aws eks update-kubeconfig --name $K8S_CLUSTER
-helm repo update
 helm upgrade --install --set $VALUES --namespace $NAMESPACE $HELM_RELEASE $HELM_CHART_FOLDER --wait --timeout 30s
