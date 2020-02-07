@@ -35,6 +35,8 @@ with:
   aws-secret-access-key: '<YOUR-aws-secret-access-key>'
   aws-default-region: '<YOUR-aws-default-region>'
   aws-cluster-name: '<YOUR-aws-cluster-name>'
+  helm-chart-folder: '<YOUR-helm-chart-folder>'
   helm-release: '<YOUR-helm-release>'
   k8s-namespace: '<YOUR-k8s-namespace>'
+  helm-parameters: '<YOUR-helm-parameters>' # Example image.tag=4287643287468276428746287,image2.tag=429483274
 ```
