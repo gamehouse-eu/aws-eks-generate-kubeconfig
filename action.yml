@@ -18,6 +18,10 @@ inputs:
     description: 'Aws Default Region'
     required: false
     default: 'us-west-2'
+  helm-chart-folder:
+    description: 'Helm chart'
+    required: true
+    default: ''
   helm-release:
     description: 'Helm release name'
     required: true
@@ -37,5 +41,6 @@ runs:
     - ${{ inputs.aws-secret-access-key }}
     - ${{ inputs.aws-default-region }}
     - ${{ inputs.aws-cluster-name }}
+    - ${{ inputs.helm-chart-folder }}
     - ${{ inputs.helm-release }}
     - ${{ inputs.k8s-namespace }}
