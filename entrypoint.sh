@@ -24,4 +24,5 @@ else
 fi
 
 aws eks update-kubeconfig --name $K8S_CLUSTER
+kubectl create namespace $NAMESPACE || true
 helm upgrade --install $VALUES --namespace $NAMESPACE $HELM_RELEASE $HELM_CHART_FOLDER $TIMEOUT --wait

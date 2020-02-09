@@ -1,5 +1,6 @@
 FROM alpine:3.6
 RUN apk -v --update add \
+        curl \
         python \
         py-pip \
         groff \
@@ -9,6 +10,11 @@ RUN apk -v --update add \
     pip install --upgrade awscli==1.17.1 s3cmd==2.0.1 python-magic && \
     apk -v --purge del py-pip && \
     rm /var/cache/apk/*
+
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.14.0/bin/linux/amd64/kubectl
+RUN chmod +x ./kubectl
+RUN mv ./kubectl /usr/local/bin/kubectl
+RUN kubectl version --client
 
 ENV BASE_URL="https://get.helm.sh"
 
