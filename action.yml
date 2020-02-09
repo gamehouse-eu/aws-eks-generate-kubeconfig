@@ -1,6 +1,6 @@
 # action.yml
-name: 'Aws KubeConfig Generator'
-description: 'Generates a KubeConfig file and leaves in the folder you mounted to /project'
+name: 'Aws EKS Helm Chart Deployer'
+description: 'Deploy any Helm Chart to Aws EKS Cluster using GitHub Actions'
 inputs:
   aws-access-key-id:
     description: 'Aws Access Key ID'
@@ -23,16 +23,22 @@ inputs:
     required: true
     default: ''
   helm-release:
-    description: 'Helm release name'
+    description: 'Helm release name or folder where the chart is'
     required: true
     default: ''
   k8s-namespace:
     description: 'k8s namespace'
     required: true
     default: ''
-outputs:
-  result:
-    description: 'result of helm deployment'
+  helm-parameters:
+    description: 'Helm deployment parameters using the Helm --set format. Example: param1=value1,param2:value2'
+    required: false
+    default: ''
+  helm-deploy-timeout:
+    description: "Set timeout to wait for the deployment of the helm chart. Example: 30s, 60s, 300s, 5m, 5m0s."
+    required: false
+    default: ''
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -45,3 +51,4 @@ runs:
     - ${{ inputs.helm-release }}
     - ${{ inputs.k8s-namespace }}
     - ${{ inputs.helm-parameters }}
+    - ${{ inputs.helm-deploy-timeout }}

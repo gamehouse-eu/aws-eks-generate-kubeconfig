@@ -8,7 +8,20 @@ K8S_CLUSTER=$4
 HELM_CHART_FOLDER=$5
 HELM_RELEASE=$6
 NAMESPACE=$7
-VALUES=$8
+
+if [ -z "$8" ]
+then
+    VALUES=""
+else
+    VALUES="--set $8"
+fi
+
+if [ -z "$9" ]
+then
+    TIMEOUT=""
+else
+    TIMEOUT="--timeout $9"
+fi
 
 aws eks update-kubeconfig --name $K8S_CLUSTER
-helm upgrade --install --set $VALUES --namespace $NAMESPACE $HELM_RELEASE $HELM_CHART_FOLDER --wait --timeout 30s
+helm upgrade --install $VALUES --namespace $NAMESPACE $HELM_RELEASE $HELM_CHART_FOLDER $TIMEOUT --wait
