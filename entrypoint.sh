@@ -23,6 +23,20 @@ else
     TIMEOUT="--timeout $9"
 fi
 
+APP_VERSION=$10
+
+cd /project
+helm package $HELM_CHART_FOLDER --app-version $APP_VERSION --version $APP_VERSION
+HELM_PACKAGE_FILE=$(readlink -f $(ls|grep $HELM_CHART_FOLDER|grep $APP_VERSION|grep "tgz"))
+
 aws eks update-kubeconfig --name $K8S_CLUSTER
-kubectl create namespace $NAMESPACE || true
-helm upgrade --install $VALUES --namespace $NAMESPACE $HELM_RELEASE $HELM_CHART_FOLDER $TIMEOUT --wait
+
+# Create namespace if it doesn't exists
+NAMESPACE_EXISTS=$(kubectl get namespace|grep -w $NAMESPACE|wc -l|awk '{print $1}')
+if [ "$NAMESPACE_EXISTS" -eq "0" ]; then
+   kubectl create namespace $NAMESPACE || true
+fi
+
+# Create the package
+
+helm upgrade --install $VALUES --namespace $NAMESPACE $HELM_RELEASE $HELM_PACKAGE_FILE $TIMEOUT --wait
