@@ -25,7 +25,6 @@ fi
 
 APP_VERSION=$10
 
-cd /project
 helm package $HELM_CHART_FOLDER --app-version $APP_VERSION --version $APP_VERSION
 HELM_PACKAGE_FILE=$(readlink -f $(ls|grep $HELM_CHART_FOLDER|grep $APP_VERSION|grep "tgz"))
 
